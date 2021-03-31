@@ -67,7 +67,7 @@
       const getToken = "https://fzl82g0umf.execute-api.us-east-1.amazonaws.com/dev/api/token";
     
       getAccessToken.onclick = function () {
-        let code = codeValue.value;
+        // const code = codeValue.value.replace("/", "%2F");
         // if the auth code is not URL-encoded, the URL-encode it
         if (decodeURIComponent(code) === code) {
           code = encodeURIComponent(codeValue.value);
