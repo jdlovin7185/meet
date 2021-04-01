@@ -8,12 +8,6 @@ module.exports.getAccessToken = async (event) => {
   const code = decodeURIComponent(`${event.pathParameters.code}`);
 
   return new Promise((resolve, reject) => {
-    /**
-     * Exchange authorization code for access 
-     * token with a "callback" after the exchange,
-     * The callback in this case is an arrow function with the results as parameters: 
-     * "err" and "token"
-     */
 
     oAuth2Client.getToken(code, (err, token) => {
       if (err) {
@@ -26,6 +20,12 @@ module.exports.getAccessToken = async (event) => {
     // respond with OAuth token
     return {
       statusCode: 200,
+      headers: {
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": true,
+        "Access-Control-Allow-Methods": "OPTIONS, POST, GET"
+      },
       body: JSON.stringify(token),
     };
   })
@@ -40,6 +40,7 @@ module.exports.getAccessToken = async (event) => {
 };
 
 const { google } = require("googleapis");
+const { toolresults } = require("googleapis/build/src/apis/toolresults");
 const OAuth2 = google.auth.OAuth2;
 const calendar = google.calendar("v3");
 /**
