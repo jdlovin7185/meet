@@ -23,7 +23,7 @@ class NumberOfEvents extends Component {
         placeholder="Enter Number of Events"
         className="eventNumber"
         value={this.state.count}
-        onChange={this.handleNumberOfEvents}
+        onChange={this.handleNumberChanged}
         />
       </div>
     );
