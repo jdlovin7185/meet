@@ -7,9 +7,9 @@ class NumberOfEvents extends Component {
   }
 
   handleNumberChanged = (event) => {
-    const value = event.target.value;
+    const count = event.target.value;
     this.setState({
-      count: value
+      count,
     });
   };
 
@@ -23,10 +23,10 @@ class NumberOfEvents extends Component {
         placeholder="Enter Number of Events"
         className="eventNumber"
         value={this.state.count}
-        onChange={this.NumberOfEvents}
+        onChange={this.handleNumberOfEvents}
         />
       </div>
-    )
+    );
   }
 
 }
