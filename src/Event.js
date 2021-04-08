@@ -8,10 +8,10 @@ class Event extends Component {
   };
 
   handleShowDetails = () => {
-    if (this.state.hideDetails === true) {
-      this.setState({ hideDetails: false });
-    } else {
+    if (this.state.hideDetails === false) {
       this.setState({ hideDetails: true });
+    } else {
+      this.setState({ hideDetails: false });
     }
   };
 
@@ -32,7 +32,7 @@ class Event extends Component {
           <p>{event.description}</p>
         </div>
       )}
-      <button className="detailsBtn" onClick={() => this.handleShowDetails()}>{!this.state.handleShowDetails ? "Hide Details" : "Show Details"}</button>
+      <button className="detailsBtn" onClick={() => this.handleShowDetails()}>{!this.state.hideDetails ? "Show Details" : "Hide Details" }</button>
     </div>
     )
   }
