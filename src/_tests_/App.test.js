@@ -73,7 +73,6 @@ describe('<App /> integration', () => {
     const AppWrapper = mount(<App />);
     const AppEventCountState = AppWrapper.state('eventCount');
     expect(AppEventCountState).not.toEqual(undefined);
-    // Not recognizing eventCount in App.js 
     expect(AppWrapper.find(NumberOfEvents).props().eventCount).toEqual(AppEventCountState);
     AppWrapper.unmount();
   });

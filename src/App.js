@@ -30,7 +30,6 @@ class App extends Component {
     });
   }
 
-  // Check to see if this what Part 1 was talking about 
   componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
