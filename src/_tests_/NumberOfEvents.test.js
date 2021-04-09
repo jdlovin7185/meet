@@ -23,7 +23,7 @@ describe('<NumberOfEvents /> component', () => {
   test('change state when number input changes', () => {
     const numberObject = { target: { value: 5 }};
     NumberOfEventsWrapper.find('.eventNumber').simulate('change', numberObject);
-    expect(NumberOfEventsWrapper.state('count')).toBe(5); 
+    expect(NumberOfEventsWrapper.state('eventCount')).toBe(5); 
   });
 
   test('check type is equal to number', () => {
