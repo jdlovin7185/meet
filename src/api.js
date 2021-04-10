@@ -11,7 +11,7 @@ import NProgress from 'nprogress';
  * The Set will remove all duplicates from the array.
  */
 
-export const getAccessToken = async () => {
+const getAccessToken = async () => {
 
   const accessToken = localStorage.getItem('access_token');
   const tokenCheck = accessToken && (await checkToken(accessToken));
@@ -48,7 +48,7 @@ export const checkToken = async (accessToken) => {
   return result;
 };
 
-export const removeQuery = () => {
+const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
     var newurl = 
     window.location.protocol + "//" + window.location.host + 
@@ -60,7 +60,7 @@ export const removeQuery = () => {
   }
 };
 
-export const getToken = async (code) => {
+const getToken = async (code) => {
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
     'https://fzl82g0umf.execute-api.us-east-1.amazonaws.com/dev/api/token/' +
