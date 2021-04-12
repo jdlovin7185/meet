@@ -28,11 +28,6 @@ class CitySearch extends Component {
           infoText: ''
         });
       }
-      this.setState({ 
-        query: value, 
-        suggestions,
-        infoText:''
-      });
     }
 
     handleItemClicked = (suggestion) => {
