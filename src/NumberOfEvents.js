@@ -16,8 +16,12 @@ class NumberOfEvents extends Component {
       this.setState({
         infoText: 'Please pick a number between 1 and 32',
       });
-    } else {
+    } else if (value > 32) {
        this.setState({
+        infoText: 'Please pick a number between 1 and 32',
+      });
+    } else {
+      this.setState({
         infoText: ''
       });
     }
@@ -31,8 +35,8 @@ class NumberOfEvents extends Component {
         <input
         type="number"
         name="NumberofEvent"
-        placeholder="Enter Number of Events"
         className="numberOfEvents"
+        placeholder="Enter Number of Events"
         value={eventCount}
         onChange={this.handleNumberChanged}
         />

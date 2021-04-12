@@ -9,25 +9,25 @@ describe('<NumberOfEvents /> component', () => {
   });
 
   test('render number input', () => {
-    expect(NumberOfEventsWrapper.find('.eventNumber')).toHaveLength(1);
+    expect(NumberOfEventsWrapper.find('.numberOfEvents')).toHaveLength(1);
   });
 
-  test('renders a list of 32 events', () => {
-    expect(NumberOfEventsWrapper.find('.eventNumber').at(0).props().value).toEqual(32);
+  test('renders a list of events', () => {
+    expect(NumberOfEventsWrapper.find('.numberOfEvents').at(0).props().value).toEqual(32);
   });
 
   test('renders a placeholder for text box', () => {
-    expect(NumberOfEventsWrapper.find('.eventNumber').at(0).props().placeholder).toEqual('Enter Number of Events');
+    expect(NumberOfEventsWrapper.find('.numberOfEvents').at(0).props().placeholder).toEqual('Enter Number of Events');
   });
 
   test('change state when number input changes', () => {
-    const numberObject = { target: { value: 5 }};
-    NumberOfEventsWrapper.find('.eventNumber').simulate('change', numberObject);
-    expect(NumberOfEventsWrapper.state('eventCount')).toBe(5); 
+    const numberObject = { target: { value: 1 }};
+    NumberOfEventsWrapper.find('.numberOfEvents').simulate('change', numberObject);
+    expect(NumberOfEventsWrapper.state('eventCount')).toBe(1); 
   });
 
   test('check type is equal to number', () => {
-    expect(NumberOfEventsWrapper.find('.eventNumber').at(0).props().type).toEqual("number");
+    expect(NumberOfEventsWrapper.find('.numberOfEvents').at(0).props().type).toEqual("number");
   });
 
 })
