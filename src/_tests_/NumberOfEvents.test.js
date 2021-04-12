@@ -12,8 +12,8 @@ describe('<NumberOfEvents /> component', () => {
     expect(NumberOfEventsWrapper.find('.eventNumber')).toHaveLength(1);
   });
 
-  test('renders a list of 2 events', () => {
-    expect(NumberOfEventsWrapper.find('.eventNumber').at(0).props().value).toEqual(2);
+  test('renders a list of 32 events', () => {
+    expect(NumberOfEventsWrapper.find('.eventNumber').at(0).props().value).toEqual(32);
   });
 
   test('renders a placeholder for text box', () => {

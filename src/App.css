@@ -76,7 +76,7 @@ input[type='number'] {
 	background-color: #bcdcdb;
 }
 
-.event {
+.Event {
 	padding: 10px 10px 35px;
 	margin-bottom: 10px;
 	text-align: left;
@@ -85,7 +85,7 @@ input[type='number'] {
 	position: relative;
 }
 
-.details-btn {
+.detailsBtn {
 	position: absolute;
 	right: 5px;
 	bottom: 5px;

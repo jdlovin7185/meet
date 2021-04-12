@@ -8,7 +8,7 @@ class CitySearch extends Component {
       query: '',
       suggestions: [],
       showSuggestions: false
-    } 
+    }; 
 
     handleInputChanged = (event) => {
       const value = event.target.value;
@@ -28,7 +28,7 @@ class CitySearch extends Component {
           infoText: ''
         });
       }
-    }
+    };
 
     handleItemClicked = (suggestion) => {
       this.setState({
@@ -37,9 +37,8 @@ class CitySearch extends Component {
         showSuggestions: false,
         infoText: ''
       }); 
-
       this.props.updateEvents(suggestion);
-    }
+    };
 
   render() { 
     return (
@@ -68,3 +67,4 @@ class CitySearch extends Component {
 }
 
 export default CitySearch;
+
