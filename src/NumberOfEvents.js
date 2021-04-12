@@ -41,7 +41,9 @@ class NumberOfEvents extends Component {
         value={eventCount}
         onChange={this.handleNumberChanged}
         />
-        <ErrorAlert text={this.state.infoText} />
+        <div>
+          <ErrorAlert text={this.state.infoText} />
+        </div>
       </div>
     );
   }

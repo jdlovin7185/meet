@@ -129,7 +129,8 @@ input[type='number'] {
 }
 
 .Alert {
-	position: fixed;
+	position: center;
+	min-height: 60px;
 	top: 20px;
 }
 
