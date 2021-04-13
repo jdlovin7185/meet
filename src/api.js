@@ -85,6 +85,11 @@ export const getEvents = async () => {
   }
 
   const token = await getAccessToken();
+  if (!navigator.online) {
+    const data = localStorage.getItem("lastEvents");
+    NProgress.done();
+    return data?JSON.parse(events).events:[];;
+  }
 
   if (token) {
     removeQuery();
