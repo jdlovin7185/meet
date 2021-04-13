@@ -5,6 +5,7 @@ import EventList from './EventList';
 import CitySearch from './CitySearch';
 import { extractLocations, getEvents } from './api';
 import NumberOfEvents from './NumberOfEvents';
+import EventGenre from './EventGenre';
 import {
   ScatterChart,
   Scatter,
@@ -68,7 +69,7 @@ class App extends Component {
   }
 
   render() {
-    const { locations, eventCount } = this.state;
+    const { locations, eventCount, events } = this.state;
     return (
       <div className="App">
         <h1>Meet App</h1>
@@ -79,6 +80,8 @@ class App extends Component {
           eventCount={eventCount}
         />       
          <h4>Events in each city</h4>
+         <div className="data-vis-wrapper">
+         <EventGenre events={events} />
         <ResponsiveContainer height={400}>
          <ScatterChart
           margin={{
@@ -92,6 +95,7 @@ class App extends Component {
           <Scatter data={this.getData()} fill="#8884d8" />
         </ScatterChart>
       </ResponsiveContainer>
+      </div>
         <EventList events={this.state.events}/>
       </div>
     );
