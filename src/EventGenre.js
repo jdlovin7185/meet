@@ -16,22 +16,25 @@ const EventGenre = ({ events }) => {
   const getData = () => {
     const genres = [
       'React',
-      'Javascript',
+      'JavaScript',
       'Node',
       'jQuery',
       'AngularJS'
     ];
     const data = genres.map((genre) => {
-      const value = events.filter(({ summary }) => 
-      summary.split(' ').includes(genre)).length
+      const value = events.filter((event) => {
+        return event.summary.split(' ').includes(genre)
+      }).length
       return {
         name: genre, value
       }
-    });
-    return data;
-    }
+    })
+    const filterData = data.filter((item) => {
+      return item.value > 0
+    })
+    return filterData;
+  };
   
-
   return (
     <ResponsiveContainer height={400} >
       <PieChart width={400} height={400}>
