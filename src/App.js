@@ -3,9 +3,10 @@ import './App.css';
 import './nprogress.css';
 import EventList from './EventList';
 import CitySearch from './CitySearch';
-import { extractLocations, getEvents } from './api';
+import { extractLocations, getEvents, checkToken } from './api';
 import NumberOfEvents from './NumberOfEvents';
 import EventGenre from './EventGenre';
+import Login from './Login';
 import {
   ScatterChart,
   Scatter,
@@ -55,8 +56,21 @@ class App extends Component {
     return data;
   };
 
-  componentDidMount() {
+  async componentDidMount() {
+    const accessToken =
+      localStorage.getITem('access_token');
+    const validToken = accessToken !== null ? await checkToken (accessToken) : false;
+    this.setState({ tokenCheck: validToken });
+    if (validToken === true) this.updateEvents()
+    const searchParams = new
+    URLSearchParams(window.location.search);
+    const code = searchParams.get('code');
+
     this.mounted = true;
+    if (code && this.mounted === true && validToken === false){
+      this.setState({tokenCheck:true});
+      this.updateEvents()
+    }
     getEvents().then((events) => {
       if (this.mounted) {
       this.setState({ events: events.slice(0, this.state.eventCount), locations: extractLocations(events) });
@@ -69,8 +83,12 @@ class App extends Component {
   }
 
   render() {
-    const { locations, eventCount, events } = this.state;
-    return (
+    const { locations, eventCount, events, tokenCheck } = this.state;
+    return tokenCheck === false ? (
+      <div className="App">
+        <Login />
+      </div>
+    ) : (
       <div className="App">
         <h1>Meet App</h1>
         <h4>Choose your nearest city</h4>

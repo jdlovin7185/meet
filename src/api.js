@@ -13,10 +13,10 @@ import NProgress from 'nprogress';
 
 const getAccessToken = async () => {
 
-  const accessToken = localStorage.getItem('access_token');
+  const accessToken = await localStorage.getItem('access_token');
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
-  if (!accessToken || tokenCheck.error) {
+  if (!accessToken || !tokenCheck) {
     await localStorage.removeItem("access_token");
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get("code");
@@ -30,7 +30,7 @@ const getAccessToken = async () => {
     return code && getToken(code);
   }
   return accessToken;
-}
+};
 
 export const extractLocations = (events) => {
   var extractLocations = events.map((event) => event.location);
@@ -45,7 +45,7 @@ export const checkToken = async (accessToken) => {
   .then((res) => res.json())
   .catch((error) => error.json());
 
-  return result;
+  return result.error ? false : true;
 };
 
 const removeQuery = () => {
@@ -61,10 +61,10 @@ const removeQuery = () => {
 };
 
 const getToken = async (code) => {
+  removeQuery();
   const encodeCode = encodeURIComponent(code);
   const { access_token } = await fetch(
-    'https://fzl82g0umf.execute-api.us-east-1.amazonaws.com/dev/api/token/' +
-    encodeCode
+    `https://fzl82g0umf.execute-api.us-east-1.amazonaws.com/dev/api/token/${encodeCode}`
   )
   .then((res) => {
     return res.json();
